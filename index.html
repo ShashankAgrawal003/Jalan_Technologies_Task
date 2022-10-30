@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Welcome to Shashank Coffee House</h1>
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    class Coffee {
+    constructor(coffeeName, addOn, quantity) {
+      this.coffeeName = coffeeName;
+      this.addOn = addOn;
+      this.quantity = quantity;
+      
+    }
+    getAmount(items) {
+        var price = 0 
+        if (this.coffeeName==="Espresso"){
+            if (this.addOn === "Milk"){
+                price = 60 
+            }
+            else if (this.addOn === "Cream"){
+                price = 75
+            }
+            else if (this.addOn === "Latte"){
+                price = 100
+            }
+            else{
+            alert("You have entered wrong input");
+            return [],0;
+        }
+        }
+        else if (this.coffeeName==="Cappuccino"){
+            if (this.addOn === "Milk"){
+                price = 80
+            }
+            else if (this.addOn === "Cream"){
+                price = 90
+            }
+            else if (this.addOn === "Latte"){
+                price = 125
+            }
+            else{
+            alert("You have entered wrong input");
+            return [],0;
+        }
+        }
+        else if (this.coffeeName==="Latte"){
+            if (this.addOn === "Milk"){
+                price = 100
+            }
+            else if (this.addOn === "Cream"){
+                price  = 125
+            }
+            else if (this.addOn === "Latte"){
+                price = 150
+            }
+            else{
+            alert("You have entered wrong input");
+            return [],0;
+        }
+        
+        }
+        else{
+            alert("You have entered wrong input");
+
+            return [],0;
+        }
+
+        var amount = price*this.quantity
+        var i = `${this.coffeeName} | ${this.addOn} | ${this.quantity} | ${amount}`
+        items.push(i) 
+        totalAmount+=amount
+        return items, totalAmount
+      
+    }
+    getBill(items, totalAmount){
+        items.push(`Total Amount: ${totalAmount}`)
+        for(var i in items){
+            console.log(items[i])
+            let x=document.getElementById("demo");
+            var tag=document.createElement("p");
+            var text=document.createTextNode(items[i]);
+            tag.appendChild(text);
+            x.appendChild(tag);
+        }     
+    }
+}
+
+
+var items = ["Name  |  AddOn  |  QTY  | Amount"];
+var totalAmount = 0
+while(true){
+let coffeeName=prompt("Which coffee you want? Espresso | Cappuccino | Latte");
+let addOnName=prompt("What addOn you want? Milk | Cream | Latte");
+let quantityNumber=prompt("How much Quantity");
+var myCoffee1 = new Coffee(coffeeName,addOnName,quantityNumber);
+items, totalAmount = myCoffee1.getAmount(items);
+let option=confirm("Do you want to add more?");
+if(!option){
+    
+    break;
+}
+}
+myCoffee1.getBill(items, totalAmount);
+
+}
+</script>
+
+</body>
+</html>
